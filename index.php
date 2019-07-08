@@ -58,6 +58,14 @@
       ?>
 
     </div>
+    <div class="container-fluid">
+      <h1>Recibidos</h1>
+      <?php
+      //$argsEmitidos["cssClasses"] = "table table-bordered table-hover table-nomargin table-striped dataTable dataTable-colreorder";
+      printReceivedTable("table data table-bordered table-hover table-nomargin table-striped dataTable dataTable-colreorder");
+      ?>
+
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -66,15 +74,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script type="text/javascript">
+    $.extend( true, $.fn.dataTable.defaults, {
+    "searching": true,
+    "ordering": true,
+
+    } );
     $(document).ready( function () {
-    $('#tabla').DataTable({
+    $('table.dataTable').DataTable({
       "language": {
             "lengthMenu": "Mostrando _MENU_ filas por página",
             "zeroRecords": "No hay datos para mostrar - disculpa",
             "info": "Mostrando página _PAGE_ de _PAGES_",
             "infoEmpty": "Sin datos",
             "infoFiltered": "(Filtrado de _MAX_ total de registros)"
-      }
+      },
+      /*stateSave: true,*/
+      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+      "pageLength": 50
+
     });
     } );
     </script>

@@ -14,7 +14,7 @@ set_error_handler("ErrorHandler");
 $dir = $_SERVER['DOCUMENT_ROOT'].'/fl/emitidos';
 $filesEmitidos = array_slice(scandir($dir), 2);
 $dirR = $_SERVER['DOCUMENT_ROOT'].'/fl/recibidos';
-$filesR = array_slice(scandir($dirR), 2);
+$filesRecibidos = array_slice(scandir($dirR), 2);
 
 global $iva;
 global $total;
@@ -71,6 +71,53 @@ foreach($listEmitidos as $file){
   echo 'subtotal: '. $subTotal . '<br />';
   echo 'Total: ' . $total . '<br />';
   echo '</div>';
+  echo '</div>';
+
+}
+function printReceivedTable($cssArgs){
+  global $filesRecibidos;
+  $listRecibidos = $filesRecibidos;
+
+  $rfcs = array();
+  $contador = 0;
+  $subTotal = 0;
+  $total = 0;
+  $iva = 0;
+
+//$listEmitidos = $argsEmitidos["listFiles"];
+//$styleCss = $argsEmitidos["cssClasses"];
+$styleCss = $cssArgs;
+echo '<table id="tablaRecibidos" class="'. $styleCss .'">';
+echo '<thead>';
+echo '	<tr>';
+echo '		<th>Fila</th>';
+echo '		<th>RFC</th>';
+echo '		<th class="hidden-1024">Emisor</th>';
+echo '		<th class="hidden-350">Subtotal</th>';
+echo '		<th class="hidden-480">IVA</th>';
+echo '		<th>Total</th>';
+echo '	</tr>';
+echo '</thead>';
+
+echo '<tbody>';
+
+foreach($listRecibidos as $file){
+    //print $file . '<br/>';
+    $factura = new factura;
+    $contador ++;
+
+    $factura->readXml('recibidos/'.$file,$contador);
+    $factura->printTrEmisor();
+    $subTotal += $factura->returnSubTotal();
+    $total += $factura->returnTotal();
+    $iva += $factura->returnIva();
+
+    //Obtener sumatoria por RFC
+  $rfcs[] = array($factura->emisorRfc =>  $factura->total);
+
+  }
+  echo '</tbody>';
+	echo '</table>';
   echo '</div>';
 
 }
@@ -166,25 +213,27 @@ class factura{
     echo '</tr>';
 
     foreach($rfcs as $key => $value) {
-    echo '<tr>';
-        echo '<td>';
-            echo "$key";
-        echo '</td>';
-        echo '<td>';
-            echo "$value";
-        echo '</td>';
-    echo '</tr>';
-    }
-    echo '<tfoot>';
-    echo '<tr>';
-        echo '<td> Total';
-        echo '</td>';
-        echo '<td>';
-            print_r(array_sum($rfcs));
-        echo '</td>';
-    echo '<tr>';
-    echo '</tfoot>';
+        echo '<tr>';
+            echo '<td>';
+                echo "$key";
+            echo '</td>';
+            echo '<td>';
+                echo "$value";
+            echo '</td>';
+        echo '</tr>';
+        }
+        echo '<tfoot>';
+        echo '<tr>';
+            echo '<td> Total';
+            echo '</td>';
+            echo '<td>';
+                print_r(array_sum($rfcs));
+            echo '</td>';
+        echo '<tr>';
+        echo '</tfoot>';
 
-    echo '</table>';
- }
+        echo '</table>';
+     }
+
+
  ?>
