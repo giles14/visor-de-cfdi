@@ -1,4 +1,5 @@
 # visor-de-cfdi
+h2. ¿Que es?
 Programa para visualizar en el navegador el resumen de los CFDI emitidos por el SAT cargados al sistema
 Ésta aplicación utiliza las liberías de:
 Código:
