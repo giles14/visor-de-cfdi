@@ -133,6 +133,18 @@ class factura{
     public $total;
     public $Iva;
     public $contador;
+    public $fechaEmision;
+    public $folioFiscal;
+    public $serieCertCSD;
+    public $folioInterno;
+    public $tipo;
+    public $tipoImpuestos;
+    public $impuestosTraslados;
+    public $claveDePago;
+    public $caracteristicasPago;
+    public $selloDigitalCFDI;
+    public $selloSat;
+    public $cadenaComplementoSat;
 
 
 	public function readXml($fileToRead, $row)
