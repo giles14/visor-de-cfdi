@@ -127,6 +127,7 @@ class factura{
 	private $xml;
     public $emisorRfc;
     public $emisorRazonSocial;
+    public $regimenEmisor;
     public $receptorRfc;
     public $receptorRazonSocial;
     public $subTotal;
@@ -140,11 +141,14 @@ class factura{
     public $tipo;
     public $tipoImpuestos;
     public $impuestosTraslados;
-    public $claveDePago;
+    public $metodoPago;
     public $caracteristicasPago;
     public $selloDigitalCFDI;
     public $selloSat;
     public $cadenaComplementoSat;
+    public $noSerteCertificadoSat;
+    public $fechaTimbrado;
+    public $usoCFDi;
 
 
 	public function readXml($fileToRead, $row)
@@ -158,6 +162,11 @@ class factura{
         foreach ($xml->xpath('//cfdi:Comprobante') as $cfdiComprobante){
             $this->subTotal = strval($cfdiComprobante['SubTotal']);
             $this->total = strval($cfdiComprobante['Total']);
+            $this->serieCertCSD = strval($cfdiComprobante['NoCertificado']);
+            $this->fechaEmision = strval($cfdiComprobante['Fecha']);
+            $this->selloSat = strval($cfdiComprobante['Sello']);
+            $this->metodoPago = strval($cfdiComprobante['MetodoPago']);
+            $this->folio = strval($cfdiComprobante['Folio']);
 
         }
 
