@@ -20,7 +20,7 @@
     <title>Visor Automático de CFDI</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg  navbar-custom">
+    <nav class="navbar sticky-top navbar-expand-lg  navbar-custom">
       <a class="navbar-brand" href="#">Visor automático de CFDI's</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
