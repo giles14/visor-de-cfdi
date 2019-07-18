@@ -164,6 +164,7 @@ class factura{
     public $fechaTimbrado;
     public $usoCFDI;
     public $formaPago;
+    public $archivoActual;
 
 	public function readXml($fileToRead, $row)
 	{
@@ -172,6 +173,8 @@ class factura{
   		$ns = $xml->getNamespaces(true);
   		$xml->registerXPathNamespace('c', $ns['cfdi']);
   		$xml->registerXPathNamespace('t', $ns['tfd']);
+      $this->archivoActual = $fileToRead;
+      $this->archivoActual = str_replace("emitidos/", "", $this->archivoActual);
 
         foreach ($xml->xpath('//cfdi:Comprobante') as $cfdiComprobante){
             $this->subTotal = strval($cfdiComprobante['SubTotal']);
@@ -213,7 +216,7 @@ class factura{
     {
 
         echo '<tr>';
-        echo '<td>' . $this->contador . '</td>';
+        echo '<td><a href="/fl/vistaUnica.php?archivo='.$this->archivoActual.'">' . $this->contador . '</a></td>';
         echo '<td>' . $this->receptorRfc . '</td>';
         echo '<td class="hidden-1024">' . $this->receptorRazonSocial . '</td>';
         echo '<td class="hidden-350"> $ ' . number_format($this->subTotal,2) . '</td>';

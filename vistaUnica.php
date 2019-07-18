@@ -2,7 +2,7 @@
 if($_GET["archivo"]){
 $facturaUsar = $_GET["archivo"];
   $facturaActual = facturaUnica($facturaUsar);
-  echo $facturaUsar;
+  //echo $facturaUsar;
 }else{
 
 }
