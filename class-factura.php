@@ -61,6 +61,7 @@ foreach($listEmitidos as $file){
 		$subTotal += $factura->returnSubTotal();
 		$total += $factura->returnTotal();
 		$iva += $factura->returnIva();
+
 		}
 	echo '</tbody>';
 	echo '</table>';
@@ -122,9 +123,22 @@ foreach($listRecibidos as $file){
 
 }
 
+//Función para inicializar la vista única de un CFDI :: Todo agregar $file (para saber que CFDI mostrar)
+function facturaUnica($facturaName){
+  $nombreFactura = $facturaName;
+  $unica = new factura;
+  $unica->readXml('emitidos/'.$nombreFactura,$contador);
+  ?>
+  <!-- <pre>
+    <?php //print_r($unica);  ?>
+  </pre> -->
+  <?php
+  return $unica;
+}
+
 class factura{
-	private $fileToRead;
-	private $xml;
+	  private $fileToRead;
+	  private $xml;
     public $emisorRfc;
     public $emisorRazonSocial;
     public $regimenEmisor;
@@ -148,25 +162,27 @@ class factura{
     public $cadenaComplementoSat;
     public $noSerteCertificadoSat;
     public $fechaTimbrado;
-    public $usoCFDi;
-
+    public $usoCFDI;
+    public $formaPago;
 
 	public function readXml($fileToRead, $row)
 	{
-        $this->contador = $row;
-		$xml = simplexml_load_file($fileToRead);
-		$ns = $xml->getNamespaces(true);
-		$xml->registerXPathNamespace('c', $ns['cfdi']);
-		$xml->registerXPathNamespace('t', $ns['tfd']);
+      $this->contador = $row;
+  		$xml = simplexml_load_file($fileToRead);
+  		$ns = $xml->getNamespaces(true);
+  		$xml->registerXPathNamespace('c', $ns['cfdi']);
+  		$xml->registerXPathNamespace('t', $ns['tfd']);
 
         foreach ($xml->xpath('//cfdi:Comprobante') as $cfdiComprobante){
             $this->subTotal = strval($cfdiComprobante['SubTotal']);
             $this->total = strval($cfdiComprobante['Total']);
+            $this->metodoPago = strval($cfdiComprobante['MetodoPago']);
             $this->serieCertCSD = strval($cfdiComprobante['NoCertificado']);
+            $this->tipo = strval($cfdiComprobante['TipoDeComprobante']);
             $this->fechaEmision = strval($cfdiComprobante['Fecha']);
             $this->selloSat = strval($cfdiComprobante['Sello']);
-            $this->metodoPago = strval($cfdiComprobante['MetodoPago']);
-            $this->folio = strval($cfdiComprobante['Folio']);
+            $this->folioInterno = strval($cfdiComprobante['Folio']);
+            $this->formaPago = strval($cfdiComprobante['FormaPago']);
 
         }
 
@@ -174,6 +190,7 @@ class factura{
 		foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Emisor') as $Emisor){
           $this->emisorRfc = strval($Emisor['Rfc']);
           $this->emisorRazonSocial = strval($Emisor['Nombre']);
+          $this->regimenEmisor = strval($Emisor['RegimenFiscal']);
 
 		}
         foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Impuestos//cfdi:Traslados//cfdi:Traslado') as $Traslado){
@@ -182,8 +199,16 @@ class factura{
         foreach ($xml->xpath('//cfdi:Comprobante//cfdi:Receptor') as $Receptor){
            $this->receptorRfc = strval($Receptor['Rfc']);
            $this->receptorRazonSocial = strval($Receptor['Nombre']);
+           $this->usoCFDI = strval($Receptor['UsoCFDI']);
         }
+        foreach ($xml->xpath('//cfdi:complemento//tfd:timbrefiscaldigital') as $timbre){
+           $this->folioFiscal = strval($timbre['UUID']);
+        }
+        // echo "<pre>";
+        // var_dump($this);
+        // echo "</pre>";
 	}
+
     public function printTr()
     {
 
@@ -209,6 +234,11 @@ class factura{
         echo '</tr>';
 
     }
+
+    public function singleView(){
+
+    }
+
     public function returnSubTotal(){
         return $this->subTotal;
     }
