@@ -204,12 +204,12 @@ class factura{
            $this->receptorRazonSocial = strval($Receptor['Nombre']);
            $this->usoCFDI = strval($Receptor['UsoCFDI']);
         }
-        foreach ($xml->xpath('//cfdi:complemento//tfd:timbrefiscaldigital') as $timbre){
+        foreach ($xml->xpath('//cfdi:Comprobante//cfdi:complemento//tfd:timbrefiscaldigital') as $timbre){
            $this->folioFiscal = strval($timbre['UUID']);
         }
-        // echo "<pre>";
-        // var_dump($this);
-        // echo "</pre>";
+         // echo "<pre>";
+         // var_dump($this);
+         // echo "</pre>";
 	}
 
     public function printTr()
