@@ -17,12 +17,5 @@
       ?>
 
     </div>
-    <div class="container-fluid">
-      <h1>Recibidos</h1>
-      <?php
-      $factura->tableDiot();
-      ?>
-
-    </div>
 
   <?php include 'footer.php';?>

@@ -122,6 +122,13 @@ foreach($listRecibidos as $file){
   echo '</tbody>';
 	echo '</table>';
   echo '</div>';
+  echo '<div class="container-fluid">';
+  echo '<div class="totales">';
+  echo 'iva: '. $iva . '<br />';
+  echo 'subtotal: '. $subTotal . '<br />';
+  echo 'Total: ' . $total . '<br />';
+  echo '</div>';
+  echo '</div>';
 
 }
 
