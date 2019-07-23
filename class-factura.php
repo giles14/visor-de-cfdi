@@ -11,9 +11,11 @@ function ErrorHandler($errno, $errstr, $errfile, $errline) {
 
 set_error_handler("ErrorHandler");
 
-$dir = $_SERVER['DOCUMENT_ROOT'].'/fl/emitidos';
+//$dir = $_SERVER['DOCUMENT_ROOT'].'/fl/emitidos';
+$dir = __DIR__.'/emitidos';
 $filesEmitidos = array_slice(scandir($dir), 2);
-$dirR = $_SERVER['DOCUMENT_ROOT'].'/fl/recibidos';
+//$dirR = $_SERVER['DOCUMENT_ROOT'].'/fl/recibidos';
+$dirR = __DIR__.'/recibidos';
 $filesRecibidos = array_slice(scandir($dirR), 2);
 
 global $iva;

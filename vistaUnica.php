@@ -8,36 +8,7 @@ $facturaUsar = $_GET["archivo"];
 }
   //print_r($facturaActual);
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Bootstrap -->
-
-    <link rel="stylesheet" href="css/plugins/datatable/TableTools.css">
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="style.css">
-
-    <title>Visor Automático de CFDI</title>
-
-    <style type="text/css">
-    .tg  {border-collapse:collapse;border-spacing:0;}
-    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-    .tg .tg-yqpd{border-color:#ffffff;text-align:left}
-    .tg .tg-zv4m{border-color:#ffffff;text-align:left;vertical-align:top}
-    .tg .tg-htd1{background-color:#efefef;border-color:#ffffff;text-align:left}
-    .tg .tg-jax5{background-color:#c0c0c0;border-color:#ffffff;text-align:left}
-    </style>
-
-  </head>
-  <body>
+<?php include 'header.php';?>
     <nav class="navbar navbar-expand-lg  navbar-custom">
       <a class="navbar-brand" href="#">Visor automático de CFDI's</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,5 +80,4 @@ $facturaUsar = $_GET["archivo"];
         </tr>
       </table>
     </div>
-  </body>
-</html>
+  <?php include 'footer.php';?>
