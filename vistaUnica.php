@@ -9,36 +9,6 @@ $facturaUsar = $_GET["archivo"];
   //print_r($facturaActual);
 ?>
 <?php include 'header.php';?>
-    <nav class="navbar navbar-expand-lg  navbar-custom">
-      <a class="navbar-brand" href="#">Visor automático de CFDI's</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Visor <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Subir CFDI's</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Categorías</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Opciones
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Privacidad</a>
-              <a class="dropdown-item" href="#">Cuenta</a>
-              <a class="dropdown-item" href="#">Otra opción</a>
-            </div>
-          </li>
-        </ul>
-        <span class="ml-auto navbar-text">Ver 0.1</span>
-      </div>
-    </nav>
     <div class="container-fluid">
       <h1>CFDI Generado</h1>
       <table class="tg table table-hover table-sm">

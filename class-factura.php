@@ -225,7 +225,7 @@ class factura{
     {
 
         echo '<tr>';
-        echo '<td><a href="/fl/vistaUnica.php?archivo='.$this->archivoActual.'">' . $this->contador . '</a></td>';
+        echo '<td><a href="vistaUnica.php?archivo='.$this->archivoActual.'">' . $this->contador . '</a></td>';
         echo '<td>' . $this->receptorRfc . '</td>';
         echo '<td class="hidden-1024">' . $this->receptorRazonSocial . '</td>';
         echo '<td class="hidden-350"> $ ' . number_format($this->subTotal,2) . '</td>';

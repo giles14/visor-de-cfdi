@@ -14,9 +14,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="style.css">
 
-
-
     <title>Visor Automático de CFDI</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="js/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
+
+    <!-- production -->
+    <script type="text/javascript" src="js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+
   </head>
   <body>
     <nav class="navbar sticky-top navbar-expand-lg  navbar-custom">
@@ -27,10 +32,10 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Visor <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Visor <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Subir CFDI's</a>
+            <a class="nav-link" href="subir-cfdi.php">Subir CFDI's</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Categorías</a>
@@ -49,5 +54,5 @@
         <span class="ml-auto navbar-text">Ver 0.1</span>
       </div>
     </nav>
-    <?php echo $_SERVER['DOCUMENT_ROOT']; ?>
-    <?php echo __DIR__ ?>
+    <?php // echo $_SERVER['DOCUMENT_ROOT']; ?>
+    <?php //echo __DIR__ ?>
