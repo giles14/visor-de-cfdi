@@ -9,18 +9,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Bootstrap -->
 
+    <!-- TableTools.css -->
     <link rel="stylesheet" href="css/plugins/datatable/TableTools.css">
-    <!-- Theme CSS -->
+
+    <!-- Tema CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="style.css">
 
     <title>Visor Automático de CFDI</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="js/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
 
-    <!-- production -->
+
+
+    <!-- carga de plupload y estilos  -->
+    <link rel="stylesheet" href="js/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
     <script type="text/javascript" src="js/plupload.full.min.js"></script>
     <script type="text/javascript" src="js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+    <script type="text/javascript" src="js/i18n/es.js"></script>
 
   </head>
   <body>
